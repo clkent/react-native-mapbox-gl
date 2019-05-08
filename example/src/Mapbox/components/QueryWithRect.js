@@ -1,9 +1,9 @@
 import React from 'react';
-import {Text} from 'react-native';
+import { Text } from 'react-native';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 
 import sheet from '../styles/sheet';
-import nycJSON from '../assets/nyc_geojson.json';
+import nycJSON from '../../assets/nyc_geojson.json';
 
 import BaseExamplePropTypes from './common/BaseExamplePropTypes';
 import Page from './common/Page';
@@ -14,18 +14,18 @@ const styles = MapboxGL.StyleSheet.create({
     fillAntialias: true,
     fillColor: 'blue',
     fillOutlineColor: 'black',
-    fillOpacity: 0.84,
+    fillOpacity: 0.84
   },
   selectedNeighborhoods: {
     fillAntialias: true,
     fillColor: 'green',
-    fillOpacity: 0.84,
-  },
+    fillOpacity: 0.84
+  }
 });
 
 class QueryWithRect extends React.Component {
   static propTypes = {
-    ...BaseExamplePropTypes,
+    ...BaseExamplePropTypes
   };
 
   constructor(props) {
@@ -33,14 +33,14 @@ class QueryWithRect extends React.Component {
 
     this.state = {
       screenCoords: [],
-      selectedGeoJSON: null,
+      selectedGeoJSON: null
     };
 
     this.onPress = this.onPress.bind(this);
   }
 
   async onPress(e) {
-    const {screenPointX, screenPointY} = e.properties;
+    const { screenPointX, screenPointY } = e.properties;
 
     const screenCoords = Object.assign([], this.state.screenCoords);
     screenCoords.push([screenPointX, screenPointY]);
@@ -49,17 +49,17 @@ class QueryWithRect extends React.Component {
       const featureCollection = await this._map.queryRenderedFeaturesInRect(
         this.getBoundingBox(screenCoords),
         null,
-        ['nycFill'],
+        ['nycFill']
       );
 
       this.setState({
         screenCoords: [],
         selectedGeoJSON: featureCollection.features.length
           ? featureCollection
-          : null,
+          : null
       });
     } else {
-      this.setState({screenCoords});
+      this.setState({ screenCoords });
     }
   }
 
@@ -107,7 +107,7 @@ class QueryWithRect extends React.Component {
         </MapboxGL.MapView>
 
         <Bubble>
-          <Text style={{textAlign: 'center'}}>{this.message}</Text>
+          <Text style={{ textAlign: 'center' }}>{this.message}</Text>
         </Bubble>
       </Page>
     );

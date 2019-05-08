@@ -2,26 +2,26 @@ import React from 'react';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 
 import sheet from '../styles/sheet';
-import gridPattern from '../assets/grid_pattern.png';
-import smileyFaceGeoJSON from '../assets/smiley_face.json';
+import gridPattern from '../../assets/grid_pattern.png';
+import smileyFaceGeoJSON from '../../assets/smiley_face.json';
 
 import Page from './common/Page';
 import BaseExamplePropTypes from './common/BaseExamplePropTypes';
 
 const layerStyles = MapboxGL.StyleSheet.create({
   background: {
-    backgroundPattern: gridPattern,
+    backgroundPattern: gridPattern
   },
   smileyFace: {
     fillAntialias: true,
     fillColor: 'white',
-    fillOutlineColor: 'rgba(255, 255, 255, 0.84)',
-  },
+    fillOutlineColor: 'rgba(255, 255, 255, 0.84)'
+  }
 });
 
 class GeoJSONSource extends React.Component {
   static propTypes = {
-    ...BaseExamplePropTypes,
+    ...BaseExamplePropTypes
   };
 
   render() {

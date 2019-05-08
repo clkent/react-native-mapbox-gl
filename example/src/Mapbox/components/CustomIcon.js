@@ -1,9 +1,9 @@
 import React from 'react';
-import {Text} from 'react-native';
+import { Text } from 'react-native';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 
 import sheet from '../styles/sheet';
-import exampleIcon from '../assets/example.png';
+import exampleIcon from '../../assets/example.png';
 
 import BaseExamplePropTypes from './common/BaseExamplePropTypes';
 import Page from './common/Page';
@@ -13,20 +13,20 @@ const styles = MapboxGL.StyleSheet.create({
   icon: {
     iconImage: exampleIcon,
     iconAllowOverlap: true,
-    iconSize: 0.5,
-  },
+    iconSize: 0.5
+  }
 });
 
 class CustomIcon extends React.Component {
   static propTypes = {
-    ...BaseExamplePropTypes,
+    ...BaseExamplePropTypes
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      featureCollection: MapboxGL.geoUtils.makeFeatureCollection(),
+      featureCollection: MapboxGL.geoUtils.makeFeatureCollection()
     };
 
     this.onPress = this.onPress.bind(this);
@@ -40,8 +40,8 @@ class CustomIcon extends React.Component {
     this.setState({
       featureCollection: MapboxGL.geoUtils.addToFeatureCollection(
         this.state.featureCollection,
-        feature,
-      ),
+        feature
+      )
     });
   }
 
@@ -62,7 +62,7 @@ class CustomIcon extends React.Component {
         >
           <MapboxGL.ShapeSource
             id="symbolLocationSource"
-            hitbox={{width: 20, height: 20}}
+            hitbox={{ width: 20, height: 20 }}
             onPress={this.onSourceLayerPress}
             shape={this.state.featureCollection}
           >

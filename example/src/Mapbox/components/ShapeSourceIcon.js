@@ -2,8 +2,8 @@ import React from 'react';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 
 import sheet from '../styles/sheet';
-import exampleIcon from '../assets/example.png';
-import {IS_ANDROID} from '../utils';
+import exampleIcon from '../../assets/example.png';
+import { IS_ANDROID } from '../utils';
 
 import Page from './common/Page';
 import BaseExamplePropTypes from './common/BaseExamplePropTypes';
@@ -14,9 +14,9 @@ const styles = MapboxGL.StyleSheet.create({
     iconSize: MapboxGL.StyleSheet.source(
       [['example', IS_ANDROID ? 1 : 0.5], ['airport-15', 1.2]],
       'icon',
-      MapboxGL.InterpolationMode.Categorical,
-    ),
-  },
+      MapboxGL.InterpolationMode.Categorical
+    )
+  }
 });
 
 const featureCollection = {
@@ -26,41 +26,41 @@ const featureCollection = {
       type: 'Feature',
       id: '9d10456e-bdda-4aa9-9269-04c1667d4552',
       properties: {
-        icon: 'example',
+        icon: 'example'
       },
       geometry: {
         type: 'Point',
-        coordinates: [-117.20611157485, 52.180961084261],
-      },
+        coordinates: [-117.20611157485, 52.180961084261]
+      }
     },
     {
       type: 'Feature',
       id: '9d10456e-bdda-4aa9-9269-04c1667d4552',
       properties: {
-        icon: 'airport-15',
+        icon: 'airport-15'
       },
       geometry: {
         type: 'Point',
-        coordinates: [-117.205908, 52.180843],
-      },
+        coordinates: [-117.205908, 52.180843]
+      }
     },
     {
       type: 'Feature',
       id: '9d10456e-bdda-4aa9-9269-04c1667d4552',
       properties: {
-        icon: 'pin',
+        icon: 'pin'
       },
       geometry: {
         type: 'Point',
-        coordinates: [-117.206562, 52.180797],
-      },
-    },
-  ],
+        coordinates: [-117.206562, 52.180797]
+      }
+    }
+  ]
 };
 
 class ShapeSourceIcon extends React.Component {
   static propTypes = {
-    ...BaseExamplePropTypes,
+    ...BaseExamplePropTypes
   };
 
   render() {
@@ -74,7 +74,7 @@ class ShapeSourceIcon extends React.Component {
           <MapboxGL.ShapeSource
             id="exampleShapeSource"
             shape={featureCollection}
-            images={{example: exampleIcon, assets: ['pin']}}
+            images={{ example: exampleIcon, assets: ['pin'] }}
           >
             <MapboxGL.SymbolLayer id="exampleIconName" style={styles.icon} />
           </MapboxGL.ShapeSource>

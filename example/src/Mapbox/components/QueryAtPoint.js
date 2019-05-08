@@ -1,9 +1,9 @@
 import React from 'react';
-import {Text} from 'react-native';
+import { Text } from 'react-native';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
 
 import sheet from '../styles/sheet';
-import nycJSON from '../assets/nyc_geojson.json';
+import nycJSON from '../../assets/nyc_geojson.json';
 
 import BaseExamplePropTypes from './common/BaseExamplePropTypes';
 import Page from './common/Page';
@@ -14,18 +14,18 @@ const styles = MapboxGL.StyleSheet.create({
     fillAntialias: true,
     fillColor: 'blue',
     fillOutlineColor: 'black',
-    fillOpacity: 0.84,
+    fillOpacity: 0.84
   },
   selectedNeighborhood: {
     fillAntialias: true,
     fillColor: 'green',
-    fillOpacity: 0.84,
-  },
+    fillOpacity: 0.84
+  }
 });
 
 class QueryAtPoint extends React.Component {
   static propTypes = {
-    ...BaseExamplePropTypes,
+    ...BaseExamplePropTypes
   };
 
   constructor(props) {
@@ -35,23 +35,23 @@ class QueryAtPoint extends React.Component {
   }
 
   get emptyState() {
-    return {selectedGeoJSON: null, selectedCommunityDistrict: -1};
+    return { selectedGeoJSON: null, selectedCommunityDistrict: -1 };
   }
 
   async onPress(e) {
-    const {screenPointX, screenPointY} = e.properties;
+    const { screenPointX, screenPointY } = e.properties;
 
     const featureCollection = await this._map.queryRenderedFeaturesAtPoint(
       [screenPointX, screenPointY],
       null,
-      ['nycFill'],
+      ['nycFill']
     );
 
     if (featureCollection.features.length) {
       this.setState({
         selectedGeoJSON: featureCollection,
         selectedCommunityDistrict:
-          featureCollection.features[0].properties.communityDistrict,
+          featureCollection.features[0].properties.communityDistrict
       });
     } else {
       this.setState(this.emptyState);

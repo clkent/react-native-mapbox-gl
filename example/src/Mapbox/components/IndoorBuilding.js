@@ -1,11 +1,11 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import MapboxGL from '@mapbox/react-native-mapbox-gl';
-import {Slider} from 'react-native-elements';
+import { Slider } from 'react-native-elements';
 
 import sheet from '../styles/sheet';
 import colors from '../styles/colors';
-import indoorMapGeoJSON from '../assets/indoor_3d_map.json';
+import indoorMapGeoJSON from '../../assets/indoor_3d_map.json';
 
 import Page from './common/Page';
 import BaseExamplePropTypes from './common/BaseExamplePropTypes';
@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'center',
     maxHeight: 60,
-    paddingHorizontal: 24,
-  },
+    paddingHorizontal: 24
+  }
 });
 
 const layerStyles = MapboxGL.StyleSheet.create({
@@ -27,27 +27,27 @@ const layerStyles = MapboxGL.StyleSheet.create({
     fillExtrusionHeight: MapboxGL.StyleSheet.identity('height'),
     fillExtrusionBase: MapboxGL.StyleSheet.identity('base_height'),
     fillExtrusionColor: MapboxGL.StyleSheet.identity('color'),
-    fillExtrusionColorTransition: {duration: 2000, delay: 0},
-  },
+    fillExtrusionColorTransition: { duration: 2000, delay: 0 }
+  }
 });
 
 class IndoorBuilding extends React.Component {
   static propTypes = {
-    ...BaseExamplePropTypes,
+    ...BaseExamplePropTypes
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      sliderValue: -80,
+      sliderValue: -80
     };
 
     this.onSliderChange = this.onSliderChange.bind(this);
   }
 
   onSliderChange(value) {
-    this.setState({sliderValue: value});
+    this.setState({ sliderValue: value });
   }
 
   render() {
@@ -61,7 +61,9 @@ class IndoorBuilding extends React.Component {
           ref={ref => (this.map = ref)}
           style={sheet.matchParent}
         >
-          <MapboxGL.Light style={{position: [5, 90, this.state.sliderValue]}} />
+          <MapboxGL.Light
+            style={{ position: [5, 90, this.state.sliderValue] }}
+          />
 
           <MapboxGL.ShapeSource
             id="indoorBuildingSource"
@@ -81,7 +83,7 @@ class IndoorBuilding extends React.Component {
             thumbTintColor={colors.primary.blue}
             minimumValue={-180}
             maximumValue={180}
-            thumbTouchSize={{width: 44, height: 44}}
+            thumbTouchSize={{ width: 44, height: 44 }}
             maximumTrackTintColor={colors.secondary.purpleLight}
             minimumTrackTintColor={colors.secondary.purpleDark}
           />

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 
-import Mapbox from '../MapboxGl';
+import Mapbox from './MapboxGl';
 
 class HereScreen extends Component {
   static navigationOptions = {
