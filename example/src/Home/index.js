@@ -29,13 +29,14 @@ const styles = StyleSheet.create({
 
 type Props = {};
 export default class HomeScreen extends Component<Props> {
-  logo = require('../assets/tr-logo.png');
-
   render() {
     return (
       <>
         <View style={styles.container}>
-          <Image style={styles.image} source={logo} />
+          <Image
+            style={styles.image}
+            source={require('../assets/tr-logo.png')}
+          />
           <Text style={styles.welcome}>Turn-By-Turn Navigation Demo</Text>
           <Button
             title="Mapbox Demo"
