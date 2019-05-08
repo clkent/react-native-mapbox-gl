@@ -31,8 +31,7 @@
     "unittest": "jest --coverage --verbose",
     "unittest:single": "jest --testNamePattern",
     "format": "npm run lint -- --fix",
-    "lint": "./node_modules/eslint/bin/eslint.js ./javascript/** ./example/src/** ./__tests__/**",
-    "precommit": "lint-staged"
+    "lint": "./node_modules/eslint/bin/eslint.js ./javascript/** ./example/src/** ./__tests__/**"
   },
   "peerDependencies": {
     "prop-types": ">=15.5.8",
