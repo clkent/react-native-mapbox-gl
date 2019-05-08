@@ -39,11 +39,11 @@ export default class HomeScreen extends Component<Props> {
           />
           <Text style={styles.welcome}>Turn-By-Turn Navigation Demo</Text>
           <Button
-            title="Mapbox Demo"
+            title="Mapbox GL Demo"
             onPress={() => this.props.navigation.navigate('Mapbox')}
           />
           <Button
-            title="Here Demo"
+            title="Here Navigation Demo"
             onPress={() => this.props.navigation.navigate('Here')}
           />
         </View>

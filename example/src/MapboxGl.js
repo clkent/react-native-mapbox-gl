@@ -6,9 +6,9 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
-import {Icon} from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 import SafeAreaView from 'react-native-safe-area-view';
 
 import MapHeader from './components/common/MapHeader';
@@ -16,7 +16,7 @@ import MapHeader from './components/common/MapHeader';
 import sheet from './styles/sheet';
 import colors from './styles/colors';
 // Utils
-import {IS_ANDROID} from './utils';
+import { IS_ANDROID } from './utils';
 import config from './utils/config';
 // Examples
 import ShowMap from './components/ShowMap';
@@ -55,29 +55,29 @@ import UserLocationChange from './components/UserLocationChange';
 const styles = StyleSheet.create({
   noPermissionsText: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   exampleList: {
-    flex: 1,
+    flex: 1
   },
   exampleListItemBorder: {
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#ccc',
+    borderBottomColor: '#ccc'
   },
   exampleListItem: {
     paddingVertical: 32,
     paddingHorizontal: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: colors.secondary.white,
+    backgroundColor: colors.secondary.white
   },
   exampleListLabel: {
-    fontSize: 18,
+    fontSize: 18
   },
   exampleBackground: {
     flex: 1,
-    backgroundColor: colors.primary.pinkFaint,
-  },
+    backgroundColor: colors.primary.pinkFaint
+  }
 });
 
 MapboxGL.setAccessToken(config.get('accessToken'));
@@ -99,7 +99,7 @@ const Examples = [
   new ExampleItem('Set User Tracking Modes', SetUserTrackingModes),
   new ExampleItem(
     'Set User Location Vertical Alignment',
-    SetUserLocationVerticalAlignment,
+    SetUserLocationVerticalAlignment
   ),
   new ExampleItem('Show Region Change', ShowRegionChange),
   new ExampleItem('Custom Icon', CustomIcon),
@@ -124,17 +124,17 @@ const Examples = [
   new ExampleItem('Take Snapshot With Map', TakeSnapshotWithMap),
   new ExampleItem('Get Current Zoom', GetZoom),
   new ExampleItem('Get Center', GetCenter),
-  new ExampleItem('User Location Updates', UserLocationChange),
+  new ExampleItem('User Location Updates', UserLocationChange)
 ];
 
-class App extends React.Component {
+class Mapbox extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       isFetchingAndroidPermission: IS_ANDROID,
       isAndroidPermissionGranted: false,
-      activeExample: -1,
+      activeExample: -1
     };
 
     this.renderItem = this.renderItem.bind(this);
@@ -146,7 +146,7 @@ class App extends React.Component {
       const isGranted = await MapboxGL.requestAndroidLocationPermissions();
       this.setState({
         isAndroidPermissionGranted: isGranted,
-        isFetchingAndroidPermission: false,
+        isFetchingAndroidPermission: false
       });
     }
   }
@@ -162,14 +162,14 @@ class App extends React.Component {
   }
 
   onExamplePress(activeExamplePosition) {
-    this.setState({activeExample: activeExamplePosition});
+    this.setState({ activeExample: activeExamplePosition });
   }
 
   onCloseExample() {
-    this.setState({activeExample: -1});
+    this.setState({ activeExample: -1 });
   }
 
-  renderItem({item, index}) {
+  renderItem({ item, index }) {
     return (
       <View style={styles.exampleListItemBorder}>
         <TouchableOpacity onPress={() => this.onExamplePress(index)}>
@@ -189,14 +189,14 @@ class App extends React.Component {
       visible: !!item,
       transparent: true,
       animationType: 'slide',
-      onRequestClose: this.onCloseExample,
+      onRequestClose: this.onCloseExample
     };
 
     return (
       <Modal {...modalProps}>
         <SafeAreaView
-          style={[sheet.matchParent, {backgroundColor: colors.primary.pink}]}
-          forceInset={{top: 'always'}}
+          style={[sheet.matchParent, { backgroundColor: colors.primary.pink }]}
+          forceInset={{ top: 'always' }}
         >
           <View style={styles.exampleBackground}>
             {modalProps.visible ? (
@@ -219,8 +219,8 @@ class App extends React.Component {
       }
       return (
         <SafeAreaView
-          style={[sheet.matchParent, {backgroundColor: colors.primary.blue}]}
-          forceInset={{top: 'always'}}
+          style={[sheet.matchParent, { backgroundColor: colors.primary.blue }]}
+          forceInset={{ top: 'always' }}
         >
           <View style={sheet.matchParent}>
             <Text style={styles.noPermissionsText}>
@@ -234,8 +234,8 @@ class App extends React.Component {
 
     return (
       <SafeAreaView
-        style={[sheet.matchParent, {backgroundColor: colors.primary.blue}]}
-        forceInset={{top: 'always'}}
+        style={[sheet.matchParent, { backgroundColor: colors.primary.blue }]}
+        forceInset={{ top: 'always' }}
       >
         <View style={sheet.matchParent}>
           <MapHeader label="React Native Mapbox GL" />
@@ -256,4 +256,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Mapbox;
